@@ -28,18 +28,15 @@
         {{-- Form Input Data --}}
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-gradient-to-r from-red-600 to-black  h-screen overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-gradient-to-r from-red-600 to-black ">
-                        <div class=" p-6 rounded-lg shadow-lg bg-white ">
-                            @include('includes.flash-message')
-                            <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                {{-- Image --}}
-                                <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post
-                                    Image 'Must a Landscape Image 1920x1080px (1080P)' </label>
-                                <div class="form-group mb-6">
-                                    <input
-                                        class="form-control 
+                @include('includes.flash-message')
+                <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    {{-- Image --}}
+                    <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post
+                        Image 'Recommended a Landscape Image 1920x1080px (1080P)' </label>
+                    <div class="form-group mb-6">
+                        <input
+                            class="form-control 
                                     block
                                     w-full
                                     px-3
@@ -54,18 +51,18 @@
                                     ease-in-out
                                     m-0
                                     focus:text-gray-700 focus:bg-white focus:border-red-600 focus:outline-none"
-                                        type="file" id="image" name="image">
-                                    @error('image')
-                                        {{-- The $attributeValue filed is/must be $validationRule --}}
-                                        <p class="pt-2 text-danger"> {{ $message }}</p>
-                                    @enderror
-                                </div>
-                                {{-- Category --}}
-                                <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post
-                                    Category</label>
-                                <div class="form-group mb-6">
-                                    <select
-                                        class="form-select appearance-none
+                            type="file" id="image" name="image">
+                        @error('image')
+                            {{-- The $attributeValue filed is/must be $validationRule --}}
+                            <p class="pt-2 text-danger"> {{ $message }}</p>
+                        @enderror
+                    </div>
+                    {{-- Category --}}
+                    <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post
+                        Category</label>
+                    <div class="form-group mb-6">
+                        <select
+                            class="form-select appearance-none
                                     block
                                     w-full
                                     px-3
@@ -80,37 +77,37 @@
                                     ease-in-out
                                     m-0
                                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        aria-label="Default select example" name="category_id" id="category_id">
-                                        <option selected disabled>Select category</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                        {{-- The $attributeValue filed is/must be $validationRule --}}
-                                        <p class="pt-2 text-danger"> {{ $message }}</p>
-                                    @enderror
-                                </div>
-                                {{-- Title --}}
-                                <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post Title</label>
-                                <div class="form-group mb-6">
-                                    <input type="text"
-                                        class="form-control 
+                            aria-label="Default select example" name="category_id" id="category_id">
+                            <option selected disabled>Select category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            {{-- The $attributeValue filed is/must be $validationRule --}}
+                            <p class="pt-2 text-danger"> {{ $message }}</p>
+                        @enderror
+                    </div>
+                    {{-- Title --}}
+                    <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post Title</label>
+                    <div class="form-group mb-6">
+                        <input type="text"
+                            class="form-control 
                                         w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
                                         border border-solid border-gray-300 rounded transition ease-in-out m-0
                                         focus:text-gray-700 focus:bg-white focus:border-red-600 focus:outline-none"
-                                        id="title" name="title" value=" {{ old('title') }} ">
-                                    @error('title')
-                                        {{-- The $attributeValue filed is/must be $validationRule --}}
-                                        <p class="pt-2 text-danger"> {{ $message }}</p>
-                                    @enderror
-                                </div>
-                                {{-- Body --}}
-                                <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post
-                                    Body</label>
-                                <div class="form-group mb-6">
-                                    <textarea
-                                        class="
+                            id="title" name="title" value=" {{ old('title') }} ">
+                        @error('title')
+                            {{-- The $attributeValue filed is/must be $validationRule --}}
+                            <p class="pt-2 text-danger"> {{ $message }}</p>
+                        @enderror
+                    </div>
+                    {{-- Body --}}
+                    <label for="formFile" class="form-label inline-block mb-2 text-gray-500">Post
+                        Body</label>
+                    <div class="form-group mb-6">
+                        <textarea
+                            class="
                                   form-control
                                   h-70
                                   w-full
@@ -127,15 +124,15 @@
                                   m-0
                                   focus:text-gray-700 focus:bg-white focus:border-red-600 focus:outline-none
                                 "
-                                        id="body" name="body">{{ old('body') }}</textarea>
-                                    @error('body')
-                                        {{-- The $attributeValue filed is/must be $validationRule --}}
-                                        <p class="pt-2 text-danger"> {{ $message }}</p>
-                                    @enderror
-                                </div>
-                                {{-- Button --}}
-                                <button type="submit" value="submit"
-                                    class="
+                            id="body" name="body">{{ old('body') }}</textarea>
+                        @error('body')
+                            {{-- The $attributeValue filed is/must be $validationRule --}}
+                            <p class="pt-2 text-danger"> {{ $message }}</p>
+                        @enderror
+                    </div>
+                    {{-- Button --}}
+                    <button type="submit" value="submit"
+                        class="
                                 w-full
                                 px-6
                                 py-2.5
@@ -153,11 +150,9 @@
                                 transition
                                 duration-150
                                 ease-in-out">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
+
     </x-app-layout>
 @endsection
 @section('scripts')
